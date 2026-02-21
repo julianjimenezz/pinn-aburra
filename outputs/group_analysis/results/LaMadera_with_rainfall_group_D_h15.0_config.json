@@ -1,0 +1,23 @@
+{
+  "model_type": "gru",
+  "model_config": {
+    "model_type": "gru",
+    "input_size": 7,
+    "hidden_size": 128,
+    "num_layers": 2,
+    "dropout": 0.3
+  },
+  "epochs_trained": 1,
+  "best_val_rmse": 0.45031895460152804,
+  "best_val_epoch": 1,
+  "best_val_r2": -1300.491943359375,
+  "physics_params_final": {
+    "c_prime": 1.2843281638197368e-06,
+    "phi": 35.236942291259766,
+    "n": 1.2456554174423218,
+    "sigma_n": 80.23692321777344,
+    "eta": 2000.23974609375,
+    "tau": 100.0,
+    "h": 15.0
+  }
+}

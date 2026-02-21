@@ -162,11 +162,10 @@ class SoilPhysics(nn.Module):
         # Overstress (normalized)
         overstress = (params['tau'] - yield_strength) / self.sigma_0
         
-        # Perzyna dynamic strain rate: γ̇ = (1/η) · softplus(overstress)^n
-        # Using softplus instead of relu (Macaulay bracket) for smooth gradients.
-        # This ensures physics parameters always receive gradient signal.
+        # Perzyna dynamic strain rate: γ̇ = (1/η) · relu(overstress)^n
+        # Using relu enforces strict physics: 0 strain rate if overstress <= 0
         gamma_dot = (1.0 / params['eta']) * torch.pow(
-            F.softplus(overstress), params['n']
+            F.relu(overstress), params['n']
         )
         
         # Strain rate → velocity (m/day): v = γ̇ · h (m)
@@ -214,10 +213,10 @@ class SoilPhysics(nn.Module):
         # Overstress (normalized)
         overstress = (params['tau'] - yield_strength) / self.sigma_0
         
-        # Perzyna dynamic strain rate: (1/eta) * softplus(overstress)^n
-        # Using softplus instead of relu for smooth gradients
+        # Perzyna dynamic strain rate: (1/eta) * relu(overstress)^n
+        # Using relu enforces strict physics: 0 strain rate if overstress <= 0
         gamma_dot_dyn = (1.0 / params['eta']) * torch.pow(
-            F.softplus(overstress), params['n']
+            F.relu(overstress), params['n']
         )
         
         # Physics loss: difference between kinematic and dynamic

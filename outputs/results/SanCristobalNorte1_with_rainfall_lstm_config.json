@@ -1,0 +1,23 @@
+{
+  "model_type": "lstm",
+  "model_config": {
+    "model_type": "lstm",
+    "input_size": 7,
+    "hidden_size": 128,
+    "num_layers": 2,
+    "dropout": 0.3
+  },
+  "epochs_trained": 17,
+  "best_val_rmse": 0.0022820101251958117,
+  "best_val_epoch": 2,
+  "best_val_r2": 0.884831964969635,
+  "physics_params_final": {
+    "c_prime": 5.850392818450928,
+    "phi": 15.866323471069336,
+    "n": 1.6175421476364136,
+    "sigma_n": 20.86843490600586,
+    "eta": 1000000.0,
+    "tau": 15.0,
+    "h": 15.0
+  }
+}

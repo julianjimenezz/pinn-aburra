@@ -1,6 +1,6 @@
 # Input: Single CSV file (each CSV = one landslide area)
 data:
-  csv_path: 'C:\Users\julia\MGEO\THESIS\DEFORMATION_DATA\culstered_landslides_forNN_withRainfall\long_term_prediction\MedellinOriental_longterm.csv'
+  csv_path: 'C:\Users\julia\MGEO\THESIS\DEFORMATION_DATA\culstered_landslides_forNN_withRainfall\SanCristobalNorte1_with_rainfall.csv'
   feature_cols: ['u', 'X', 'Y', 'p_acum_30d', 'p_acum_60d', 'p_acum_90d', 't_days']
   target_col: 'u'
 
@@ -41,8 +41,8 @@ physics:
   # Initial parameter guesses (prevents division by zero / exploding loss)
   initial_params:
     eta: 200000.0      # start with high viscosity = low strain rate
-    c_prime: 20.0
-    phi: 25.0
+    c_prime: 16.7
+    phi: 26.8
     n: 2.0
     sigma_n: 50.0
     h: 10.0
@@ -50,9 +50,9 @@ physics:
 
   # Trainable flag for each parameter. True = learned by optimizer, False = fixed at initial value
   trainable:
-    eta: false
-    c_prime: true
-    phi: true
+    eta: true
+    c_prime: false
+    phi: false
     n: true
     sigma_n: true
     h: true
@@ -61,11 +61,11 @@ physics:
   # Bounds for parameters [min, max]. Used to constrain the optimizer.
   bounds:
     c_prime: [0.1, 25.0]
-    phi: [15.0, 21.8]
+    phi: [0.1, 30.0]
     n: [1.1, 5.0]
     sigma_n: [10.0, 200.0]
     eta: [10000.0, 5000000.0]
-    h: [5.0, 10.0]
+    h: [5.0, 20.0]
     tau: [10.0, 500.0]
 
 # Training

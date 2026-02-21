@@ -1,0 +1,12 @@
+{
+  "model_type": "gru",
+  "best_params": {
+    "hidden_size": 256,
+    "num_layers": 2,
+    "dropout": 0.3340043859881313,
+    "learning_rate": 0.0006479730572954969
+  },
+  "best_val_rmse": 0.002307188231498003,
+  "n_trials": 50,
+  "n_completed": 50
+}
